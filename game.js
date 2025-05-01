@@ -331,6 +331,17 @@ window.addEventListener('beforeinstallprompt', (e) => {
   installButton.style.display = 'block';
 });
 
+// Check if the app is already installed
+window.addEventListener('appinstalled', () => {
+  installButton.style.display = 'none';
+  deferredPrompt = null;
+});
+
+// Check if the app is already installed on page load
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+  installButton.style.display = 'none';
+}
+
 installButton.addEventListener('click', async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();

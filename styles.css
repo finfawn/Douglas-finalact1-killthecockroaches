@@ -1,16 +1,16 @@
 :root {
-  --primary-color: #43e97b;
-  --secondary-color: #38f9d7;
-  --hud-bg: rgba(30, 30, 60, 0.92);
-  --hud-border: #fffbe6;
-  --hud-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  --game-bg: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-  --panel-bg: rgba(255,255,255,0.13);
-  --panel-border: #fffbe6;
-  --panel-shadow: 0 2px 12px rgba(0,0,0,0.10);
-  --text-color: #fffbe6;
-  --accent: #ffb347;
-  --danger: #ff5252;
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --hud-bg: rgba(255, 255, 255, 0.9);
+  --hud-border: #FFD166;
+  --hud-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  --game-bg: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 100%);
+  --panel-bg: rgba(255,255,255,0.2);
+  --panel-border: #FFD166;
+  --panel-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  --text-color: #2D3047;
+  --accent: #FF6B6B;
+  --danger: #FF6B6B;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -121,7 +121,7 @@ body {
   width: 100%;
   max-width: 1100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px 20px;
   margin: 10px 0;
@@ -129,6 +129,7 @@ body {
   border: 3px solid var(--hud-border);
   border-radius: 18px;
   box-shadow: var(--hud-shadow);
+  gap: 20px;
 }
 
 #info-panel {
@@ -137,6 +138,7 @@ body {
   gap: clamp(15px, 3vw, 36px);
   font-size: clamp(0.6rem, 2vw, 1.1rem);
   color: var(--text-color);
+  margin-left: auto;
 }
 
 #info-panel button {
@@ -329,13 +331,13 @@ body {
 #install-button {
   padding: clamp(8px, 2vw, 14px) clamp(15px, 3vw, 30px);
   background-color: var(--secondary-color);
-  color: #222;
-  border: 2px solid #fffbe6;
+  color: #fff;
+  border: 2px solid var(--hud-border);
   border-radius: 14px;
   cursor: pointer;
   font-size: clamp(0.7rem, 2vw, 1.1rem);
   font-family: 'Press Start 2P', Arial, sans-serif;
-  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.18);
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2);
   transition: all 0.2s;
   letter-spacing: 1px;
   white-space: nowrap;

@@ -154,15 +154,7 @@ body {
 }
 
 #game-title {
-  margin: 5px 0;
-  font-size: clamp(1.5rem, 5vw, 2.5rem);
-  color: var(--text-color);
-  letter-spacing: 3px;
-  text-align: center;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-weight: bold;
-  padding: 0 20px;
-  line-height: 1.2;
+  display: none;
 }
 
 .controls-container, #game-area, #instructions {
@@ -178,7 +170,7 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 6px 12px;
+  padding: 6px 16px;
   margin: 5px auto;
   background: var(--hud-bg);
   border: 2px solid var(--hud-border);
@@ -209,6 +201,16 @@ body {
   white-space: nowrap;
 }
 
+#timer::before {
+  content: '⏱️';
+  margin-right: 5px;
+}
+
+#kills::before {
+  content: '💀';
+  margin-right: 5px;
+}
+
 #mute-button {
   font-size: 1.1em;
   padding: 4px 8px;
@@ -220,6 +222,10 @@ body {
   border-radius: 8px;
   -webkit-user-select: none;
   user-select: none;
+}
+
+#mute-button:active {
+  background: var(--panel-bg);
 }
 
 .controls-container.center-info-panel {

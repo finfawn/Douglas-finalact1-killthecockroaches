@@ -367,11 +367,22 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
 }
 
 installButton.addEventListener('click', async () => {
+  // Check if app is already installed
+  if (
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true
+  ) {
+    showNotification('App is already installed!', 1800, 'achievement');
+    installButton.style.display = 'none';
+    document.querySelector('.controls-container').classList.add('center-info-panel');
+    return;
+  }
   if (deferredPrompt) {
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     if (outcome === 'accepted') {
       installButton.style.display = 'none';
+      document.querySelector('.controls-container').classList.add('center-info-panel');
     }
     deferredPrompt = null;
   }

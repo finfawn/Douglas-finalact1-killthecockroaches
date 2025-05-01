@@ -38,7 +38,7 @@ body {
   overflow-x: hidden;
 }
 
-#loading-screen {
+#loading-screen, #end-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,6 +53,12 @@ body {
   z-index: 1000;
   padding: 20px;
   gap: 30px;
+  text-align: center;
+}
+
+#loading-screen > *, #end-screen > * {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #loading-screen img {
@@ -94,6 +100,11 @@ body {
 }
 
 #start-button, #play-again-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 48px);
   font-size: clamp(0.8rem, 2.5vw, 1.1rem);
   background: var(--accent);
@@ -108,9 +119,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   transform: scale(1);
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 #start-button::before {
@@ -156,6 +164,7 @@ body {
 }
 
 .controls-container {
+  width: calc(95vw - 16px);
   max-width: 1100px;
   display: flex;
   justify-content: flex-start;
@@ -173,10 +182,14 @@ body {
   backface-visibility: hidden;
 }
 
+.controls-container.center-info-panel {
+  justify-content: center;
+}
+
 #game-area {
   max-width: 1100px;
   flex-grow: 1;
-  margin: 8px auto;
+  margin: 8px auto 8px auto;
   background: var(--floor-pattern);
   border: 3px solid var(--panel-border);
   border-radius: 20px;
@@ -226,6 +239,12 @@ body {
   font-size: inherit;
   color: var(--text-color);
   margin-left: auto;
+  margin-right: 0;
+}
+
+.controls-container.center-info-panel #info-panel {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #timer, #kills {
@@ -407,23 +426,6 @@ body {
   }
 }
 
-#end-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(240, 230, 210, 0.95);
-  backdrop-filter: blur(8px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 20px;
-  gap: 30px;
-}
-
 #end-screen h2 {
   color: var(--text-color);
   font-size: clamp(1.5rem, 5vw, 2.5rem);
@@ -568,6 +570,7 @@ body {
   }
 
   .controls-container {
+    width: calc(92vw - 16px);
     padding: 4px 6px;
     margin: 2px auto 4px auto;
     gap: 7px;
@@ -581,7 +584,7 @@ body {
     width: calc(92vw - 16px);
     border-radius: 15px;
     border-width: 2px;
-    margin: 5px auto;
+    margin: 5px auto 5px auto;
     min-height: calc(78vh - 100px);
   }
 
@@ -632,51 +635,32 @@ body {
     width: clamp(50px, 15vw, 85px);
     height: clamp(50px, 15vw, 85px);
   }
+
+  #loading-screen, #end-screen {
+    padding: 10px;
+    gap: 18px;
+    text-align: center;
+  }
+  #start-button, #play-again-button {
+    font-size: 1.1rem;
+    padding: 10px 18px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @media (max-width: 380px) {
+  .controls-container, #game-area, #instructions {
+    width: calc(90vw - 8px);
+  }
   .controls-container {
     padding: 2px 2px;
     gap: 4px;
     font-size: 0.95rem;
     min-height: 26px;
   }
-
-  #info-panel {
-    gap: 8px;
-  }
-
-  #timer, #kills {
-    font-size: 1.1em;
-  }
-
-  #mute-button {
-    font-size: 1.3em;
-    padding: 2px 6px;
-  }
-}
-
-@media (max-width: 600px) {
-  #loading-screen {
-    padding: 15px;
-  }
-
-  #loading-screen img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 15px;
-  }
-
-  #start-button,
-  #play-again-button {
-    padding: 10px 20px;
-    font-size: 0.8rem;
-    border-width: 2px;
-  }
-
-  #final-score {
-    font-size: 0.9rem;
-    margin: 12px 0;
+  #game-area {
+    margin: 3px auto 3px auto;
   }
 }
 

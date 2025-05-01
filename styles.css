@@ -219,9 +219,6 @@ body {
   backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
-  margin-left: max(8px, env(safe-area-inset-left));
-  margin-right: max(8px, env(safe-area-inset-right));
-  margin-bottom: max(8px, env(safe-area-inset-bottom, 8px));
 }
 
 #instructions {
@@ -252,11 +249,18 @@ body {
   color: var(--text-color);
   margin-left: auto;
   margin-right: 0;
+  transition: margin 0.3s ease;
+}
+
+.controls-container.center-info-panel {
+  justify-content: center;
 }
 
 .controls-container.center-info-panel #info-panel {
   margin-left: 0;
   margin-right: 0;
+  justify-content: center;
+  width: 100%;
 }
 
 #timer, #kills {

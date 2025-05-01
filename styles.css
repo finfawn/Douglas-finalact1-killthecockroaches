@@ -165,7 +165,7 @@ body {
 }
 
 .controls-container {
-  width: auto;
+  width: fit-content;
   max-width: 1100px;
   display: flex;
   justify-content: flex-start;
@@ -193,6 +193,7 @@ body {
   margin-left: auto;
   margin-right: 0;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 #timer, #kills {
@@ -230,14 +231,14 @@ body {
 
 .controls-container.center-info-panel {
   justify-content: center;
-  width: auto;
+  width: fit-content;
 }
 
 .controls-container.center-info-panel #info-panel {
   margin-left: 0;
   margin-right: 0;
   justify-content: center;
-  width: auto;
+  width: fit-content;
 }
 
 #game-area {
@@ -577,6 +578,7 @@ body {
   }
 
   .controls-container {
+    width: fit-content;
     padding: 4px 8px;
     gap: 8px;
     min-height: 32px;

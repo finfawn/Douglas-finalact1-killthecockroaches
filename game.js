@@ -29,6 +29,8 @@ const installButton = document.getElementById('install-button');
 const backgroundMusic = new Audio('game-music-loop-4-144341.mp3');
 const slapSound = new Audio('hard-slap-46388.mp3');
 const tomatoSound = new Audio('tomato-squishwet-103934.mp3');
+const achievementSound = new Audio('tada_116bpm_C.wav');
+const gameOverSound = new Audio('sheesh-mpl-echo-ph.mp3');
 
 // Preload assets
 const assets = ['game-icon.png', 'cursor.png', 'roach.png', 'roach-dead.png'];
@@ -76,6 +78,10 @@ function showEndScreen() {
     finalScore.textContent = `${prefix} You are a ${label}!\nYou killed ${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'}!`;
   } else {
     finalScore.textContent = `You killed ${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'}!`;
+  }
+  if (!isMuted) {
+    gameOverSound.currentTime = 0;
+    gameOverSound.play();
   }
 }
 
@@ -136,6 +142,10 @@ function maybeShowAchievement() {
   for (let i = 0; i < achievementLabels.length; i++) {
     if (cockroachesKilled === achievementLabels[i].score) {
       showNotification(`${achievementLabels[i].prefix} ${achievementLabels[i].label}`, 1800, 'achievement');
+      if (!isMuted) {
+        achievementSound.currentTime = 0;
+        achievementSound.play();
+      }
       return;
     }
   }
@@ -158,7 +168,7 @@ function startSpawning() {
   spawnRateInterval = setInterval(() => {
     if (gameStarted && timer > 0) {
       spawnInterval = Math.max(250, spawnInterval - SPAWN_DECREASE);
-      showNotification('Speed Up!', 1200, '');
+      showNotification('Speed Up!', 1200, 'speed-up');
       clearInterval(spawnLoop);
       spawnLoop = setInterval(() => {
         if (gameStarted && timer > 0) {

@@ -165,9 +165,7 @@ body {
 }
 
 .controls-container {
-  width: fit-content;
-  max-width: 1100px;
-  display: flex;
+  display: inline-flex;
   justify-content: flex-start;
   align-items: center;
   padding: 6px 16px;
@@ -182,6 +180,9 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: all 0.3s ease;
+  box-sizing: border-box;
+  min-width: min-content;
+  width: auto;
 }
 
 #info-panel {
@@ -194,6 +195,8 @@ body {
   margin-right: 0;
   transition: all 0.3s ease;
   white-space: nowrap;
+  flex-shrink: 0;
+  min-width: min-content;
 }
 
 #timer, #kills {
@@ -230,15 +233,20 @@ body {
 }
 
 .controls-container.center-info-panel {
+  display: inline-flex;
   justify-content: center;
-  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  min-width: min-content;
 }
 
 .controls-container.center-info-panel #info-panel {
   margin-left: 0;
   margin-right: 0;
   justify-content: center;
-  width: fit-content;
+  flex-shrink: 0;
+  min-width: min-content;
 }
 
 #game-area {
@@ -578,7 +586,7 @@ body {
   }
 
   .controls-container {
-    width: fit-content;
+    display: inline-flex;
     padding: 4px 8px;
     gap: 8px;
     min-height: 32px;
@@ -736,5 +744,20 @@ body {
     #game-area {
       width: calc(90vw - 8px);
     }
+  }
+}
+
+/* Add standalone mode specific styles */
+@media all and (display-mode: standalone) {
+  .controls-container {
+    display: inline-flex;
+    width: auto;
+    min-width: min-content;
+  }
+
+  .controls-container.center-info-panel {
+    display: inline-flex;
+    width: auto;
+    min-width: min-content;
   }
 } 

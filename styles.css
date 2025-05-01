@@ -35,13 +35,13 @@ body {
   overflow: hidden;
 }
 
-#loading-screen, #end-screen {
+#loading-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(30,30,60,0.95);
+  background: rgba(240, 230, 210, 0.95);
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
@@ -49,13 +49,15 @@ body {
   align-items: center;
   z-index: 1000;
   padding: 20px;
+  gap: 30px;
 }
 
 #loading-screen img {
   width: 150px;
   height: 150px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   animation: pulse 2s infinite;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
 
 @keyframes pulse {
@@ -67,22 +69,24 @@ body {
 #loading-screen h2 {
   color: var(--text-color);
   font-size: clamp(1.2rem, 4vw, 2.1rem);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
-  text-shadow: 0 2px 8px #000;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 2px;
+  line-height: 1.4;
+  max-width: 90%;
 }
 
 #start-button, #play-again-button {
   padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 48px);
   font-size: clamp(0.8rem, 2.5vw, 1.1rem);
   background: var(--accent);
-  color: #222;
-  border: 3px solid #fffbe6;
+  color: #fff;
+  border: 3px solid var(--accent);
   border-radius: 16px;
   cursor: pointer;
-  margin-top: 30px;
-  box-shadow: 0 4px 15px rgba(255, 179, 71, 0.25);
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
   transition: all 0.2s;
   font-family: 'Press Start 2P', Arial, sans-serif;
   text-transform: uppercase;
@@ -91,9 +95,9 @@ body {
 }
 
 #start-button:hover, #play-again-button:hover {
-  background: var(--danger);
-  color: #fff;
-  border-color: var(--danger);
+  background: #fff;
+  color: var(--accent);
+  border-color: var(--accent);
   transform: scale(1.05);
   cursor: pointer;
 }
@@ -107,15 +111,19 @@ body {
   padding: 10px;
   box-sizing: border-box;
   position: relative;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
 }
 
 #game-title {
   margin: 10px 0;
-  font-size: clamp(1.2rem, 5vw, 2.2rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: var(--text-color);
   letter-spacing: 3px;
   text-align: center;
-  text-shadow: 0 2px 8px #000;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  padding: 0 20px;
+  line-height: 1.3;
 }
 
 .controls-container {
@@ -160,13 +168,17 @@ body {
 }
 
 #instructions {
-  margin: 0 0 8px 0;
-  font-size: 0.95rem;
-  color: #fffbe6cc;
+  margin: 0 0 15px 0;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  color: var(--text-color);
   text-align: center;
   font-family: 'Press Start 2P', Arial, sans-serif;
   letter-spacing: 1px;
-  text-shadow: 0 2px 8px #0002;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  padding: 0 20px;
+  max-width: 800px;
+  opacity: 0.9;
 }
 
 #notification {
@@ -335,21 +347,42 @@ body {
   }
 }
 
+#end-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(240, 230, 210, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  gap: 30px;
+}
+
 #end-screen h2 {
   color: var(--text-color);
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   margin-bottom: 20px;
-  text-shadow: 0 2px 8px #000;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   letter-spacing: 2px;
   text-align: center;
+  line-height: 1.4;
 }
 
 #final-score {
   color: var(--text-color);
   font-size: clamp(1rem, 3vw, 1.5rem);
   margin-bottom: 30px;
-  text-shadow: 0 2px 8px #000;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
+  line-height: 1.6;
+  max-width: 90%;
+  padding: 0 20px;
 }
 
 #install-button {
@@ -398,11 +431,13 @@ body {
 @media (max-width: 600px) {
   #main-content {
     padding: 8px;
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 8px));
   }
 
   #game-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 5px 0;
+    padding: 0 15px;
   }
 
   .controls-container {
@@ -421,6 +456,7 @@ body {
   #instructions {
     font-size: 0.8rem;
     margin-bottom: 6px;
+    padding: 0 15px;
   }
 
   #notification {

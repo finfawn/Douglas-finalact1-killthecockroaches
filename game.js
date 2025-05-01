@@ -31,6 +31,7 @@ const slapSound = new Audio('hard-slap-46388.mp3');
 const tomatoSound = new Audio('tomato-squishwet-103934.mp3');
 const achievementSound = new Audio('tada_116bpm_C.wav');
 const gameOverSound = new Audio('sheesh-mpl-echo-ph.mp3');
+const speedUpSound = new Audio('speedup.mp3');
 
 // Preload assets
 const assets = ['game-icon.png', 'cursor.png', 'roach.png', 'roach-dead.png'];
@@ -169,6 +170,10 @@ function startSpawning() {
     if (gameStarted && timer > 0) {
       spawnInterval = Math.max(250, spawnInterval - SPAWN_DECREASE);
       showNotification('Speed Up!', 1200, 'speed-up');
+      if (!isMuted) {
+        speedUpSound.currentTime = 0;
+        speedUpSound.play();
+      }
       clearInterval(spawnLoop);
       spawnLoop = setInterval(() => {
         if (gameStarted && timer > 0) {

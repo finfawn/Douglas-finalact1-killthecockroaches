@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kill the Cockroaches</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/png" href="game-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loading-screen">
+    <img src="game-icon.png" alt="Game Icon">
+    <h2>Are you ready to kill some cockroaches?</h2>
+    <button id="start-button">Start Game</button>
+  </div>
+  <div id="main-content" style="display:none;">
+    <h1 id="game-title">Kill the Cockroaches!</h1>
+    <div id="instructions">In 90 seconds, kill Cockroaches as you can. Enjoy Killing! - Jezreel Douglas</div>
+    <div class="controls-container">
+      <button id="install-button">Install Game</button>
+      <div id="info-panel">
+        <span id="timer">0 sec</span>
+        <span id="kills">0 kills</span>
+        <button id="mute-button" title="Mute/Unmute">🔊</button>
+      </div>
+    </div>
+    <div id="notification"></div>
+    <div id="game-area"></div>
+  </div>
+  <div id="end-screen" style="display:none;">
+    <h2>Game Over!</h2>
+    <p id="final-score"></p>
+    <button id="play-again-button">Play Again</button>
+  </div>
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful');
+          })
+          .catch(err => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+  <script src="game.js"></script>
+</body>
+</html> 

@@ -1,0 +1,21 @@
+{
+  "name": "Kill the Cockroaches",
+  "short_name": "KillCockroaches",
+  "description": "A fun game where you kill cockroaches with a slipper",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#333",
+  "theme_color": "#4CAF50",
+  "icons": [
+    {
+      "src": "game-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "game-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

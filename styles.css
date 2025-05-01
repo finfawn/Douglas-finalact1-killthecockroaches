@@ -75,6 +75,19 @@ body {
   letter-spacing: 2px;
   line-height: 1.4;
   max-width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#loading-screen h2::before {
+  content: '🐜';
+  font-size: 1.2em;
+}
+
+#loading-screen h2::after {
+  content: '🦗';
+  font-size: 1.2em;
 }
 
 #start-button, #play-again-button {
@@ -92,14 +105,19 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   transform: scale(1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-#start-button:hover, #play-again-button:hover {
-  background: #fff;
-  color: var(--accent);
-  border-color: var(--accent);
-  transform: scale(1.05);
-  cursor: pointer;
+#start-button::before {
+  content: '🎮';
+  font-size: 1.2em;
+}
+
+#play-again-button::before {
+  content: '🔄';
+  font-size: 1.2em;
 }
 
 #main-content {
@@ -111,7 +129,7 @@ body {
   padding: 10px;
   box-sizing: border-box;
   position: relative;
-  padding-bottom: env(safe-area-inset-bottom, 20px);
+  padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
 }
 
 #game-title {
@@ -239,7 +257,7 @@ body {
 #game-area {
   width: min(98vw, 1100px);
   flex-grow: 1;
-  margin: 10px auto 8px auto;
+  margin: 10px auto;
   background: var(--floor-pattern);
   border: 5px solid var(--panel-border);
   border-radius: 28px;
@@ -372,6 +390,19 @@ body {
   letter-spacing: 2px;
   text-align: center;
   line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#end-screen h2::before {
+  content: '🏆';
+  font-size: 1.2em;
+}
+
+#end-screen h2::after {
+  content: '🎯';
+  font-size: 1.2em;
 }
 
 #final-score {
@@ -383,6 +414,16 @@ body {
   line-height: 1.6;
   max-width: 90%;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#final-score::before {
+  content: '📊';
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
 #install-button {
@@ -450,7 +491,7 @@ body {
     width: calc(100vw - 16px);
     border-radius: 15px;
     border-width: 2px;
-    margin: 5px auto 8px auto;
+    margin: 5px auto;
   }
 
   #instructions {
@@ -471,6 +512,13 @@ body {
     border-radius: 16px;
     opacity: 0.6;
   }
+
+  #loading-screen h2::before,
+  #loading-screen h2::after,
+  #end-screen h2::before,
+  #end-screen h2::after {
+    font-size: 1em;
+  }
 }
 
 @media (max-width: 600px) {
@@ -482,12 +530,6 @@ body {
     width: 80px;
     height: 80px;
     margin-bottom: 15px;
-  }
-
-  #loading-screen h2,
-  #end-screen h2 {
-    font-size: 1rem;
-    padding: 0 10px;
   }
 
   #start-button,

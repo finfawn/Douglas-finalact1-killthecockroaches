@@ -16,9 +16,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-* {
+html, body {
+  width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
-  cursor: url('cursor.png') 26 64, auto !important;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,12 +30,12 @@ body {
   min-height: 100vh;
   background: var(--game-bg), url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="2" fill="%23fffbe6" fill-opacity="0.08"/></svg>');
   background-size: cover, 40px 40px;
-  font-family: 'Press Start 2P', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Press Start 2P', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #loading-screen {
@@ -130,6 +133,7 @@ body {
   box-sizing: border-box;
   position: relative;
   padding-bottom: max(8px, env(safe-area-inset-bottom, 8px));
+  overflow-x: hidden;
 }
 
 #game-title {
@@ -144,24 +148,33 @@ body {
   line-height: 1.2;
 }
 
+.controls-container, #game-area, #instructions {
+  width: calc(95vw - 16px);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
 .controls-container {
-  width: 100%;
   max-width: 1100px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 6px 12px;
-  margin: 5px 0;
+  margin: 5px auto;
   background: var(--hud-bg);
   border: 2px solid var(--hud-border);
   border-radius: 10px;
   box-shadow: var(--hud-shadow);
   gap: 12px;
   font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+  min-height: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 #game-area {
-  width: min(95vw, 1100px);
+  max-width: 1100px;
   flex-grow: 1;
   margin: 8px auto;
   background: var(--floor-pattern);
@@ -180,10 +193,15 @@ body {
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
   min-height: calc(82vh - 120px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 #instructions {
-  margin: 15px 0;
+  max-width: 800px;
+  margin: 15px auto;
   font-size: clamp(0.7rem, 1.8vw, 0.9rem);
   color: var(--text-color);
   text-align: center;
@@ -192,13 +210,13 @@ body {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 1.4;
   padding: 10px 15px;
-  max-width: 800px;
   opacity: 0.8;
   background: rgba(240, 230, 210, 0.7);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  width: calc(100% - 30px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 #info-panel {
@@ -208,6 +226,11 @@ body {
   font-size: inherit;
   color: var(--text-color);
   margin-left: auto;
+}
+
+#timer, #kills {
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
 #timer::before {
@@ -221,13 +244,20 @@ body {
 }
 
 #mute-button {
-  font-size: 1.2em;
-  padding: 4px;
+  font-size: 1.3em;
+  padding: 4px 8px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--accent);
   transition: transform 0.2s;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#mute-button:active {
+  background: var(--panel-bg);
 }
 
 #notification {
@@ -297,13 +327,15 @@ body {
   background-image: url('roach.png');
   background-size: contain;
   background-repeat: no-repeat;
-  transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), filter 0.2s;
+  transition: -webkit-transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), transform 0.3s cubic-bezier(.68,-0.55,.27,1.55), filter 0.2s;
   will-change: transform;
   touch-action: none;
   filter: drop-shadow(0 4px 12px #2228);
   animation: spawnEffect 0.3s ease-out;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
 @keyframes spawnEffect {
@@ -528,23 +560,25 @@ body {
   }
 
   #game-title {
-    font-size: 1.2rem;
-    margin: 3px 0;
-    padding: 0 10px;
+    font-size: 1.1rem;
+    margin: 2px 0 4px 0;
+    padding: 0 6px;
+    letter-spacing: 1.5px;
+    line-height: 1.1;
   }
 
   .controls-container {
-    padding: 5px 10px;
-    margin: 3px 0;
-    gap: 8px;
-    font-size: 0.7rem;
+    padding: 4px 6px;
+    margin: 2px auto 4px auto;
+    gap: 7px;
+    font-size: 1.1rem;
+    min-height: 32px;
     border-width: 1.5px;
-    border-radius: 8px;
-    width: calc(92vw);
+    border-radius: 7px;
   }
 
   #game-area {
-    width: calc(92vw);
+    width: calc(92vw - 16px);
     border-radius: 15px;
     border-width: 2px;
     margin: 5px auto;
@@ -552,11 +586,10 @@ body {
   }
 
   #instructions {
-    font-size: 0.65rem;
+    width: calc(92vw - 16px);
+    font-size: 0.7rem;
     padding: 8px 12px;
-    width: calc(100% - 20px);
-    margin: 10px 0;
-    line-height: 1.3;
+    margin: 10px auto;
   }
 
   #notification {
@@ -590,7 +623,9 @@ body {
   }
 
   #mute-button {
-    padding: 3px;
+    font-size: 1.7em;
+    padding: 4px 10px;
+    border-radius: 10px;
   }
 
   .cockroach {
@@ -601,18 +636,23 @@ body {
 
 @media (max-width: 380px) {
   .controls-container {
-    padding: 4px 8px;
-    gap: 6px;
-    font-size: 0.65rem;
+    padding: 2px 2px;
+    gap: 4px;
+    font-size: 0.95rem;
+    min-height: 26px;
   }
 
   #info-panel {
     gap: 8px;
   }
 
-  #timer::before,
-  #kills::before {
-    margin-right: 3px;
+  #timer, #kills {
+    font-size: 1.1em;
+  }
+
+  #mute-button {
+    font-size: 1.3em;
+    padding: 2px 6px;
   }
 }
 
@@ -680,4 +720,36 @@ body {
 .scaled-cursor:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+/* Chrome-specific adjustments */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  #game-area {
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+  }
+
+  .controls-container,
+  #instructions,
+  #game-area {
+    width: calc(95vw - 16px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 600px) {
+    .controls-container,
+    #instructions,
+    #game-area {
+      width: calc(92vw - 16px);
+    }
+  }
+
+  @media (max-width: 380px) {
+    .controls-container,
+    #instructions,
+    #game-area {
+      width: calc(90vw - 8px);
+    }
+  }
 } 

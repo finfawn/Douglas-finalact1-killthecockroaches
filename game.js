@@ -75,11 +75,20 @@ function showEndScreen() {
       break;
     }
   }
+  
+  let finalScoreHTML = '';
   if (label) {
-    finalScore.textContent = `${prefix} You are a ${label}!\nYou killed ${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'}!`;
+    finalScoreHTML = `
+      <div class="achievement-title">${prefix} You are a ${label}!</div>
+      <div class="total-score">${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'} killed!</div>
+    `;
   } else {
-    finalScore.textContent = `You killed ${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'}!`;
+    finalScoreHTML = `
+      <div class="total-score">${cockroachesKilled} cockroach${cockroachesKilled === 1 ? '' : 'es'} killed!</div>
+    `;
   }
+  finalScore.innerHTML = finalScoreHTML;
+  
   if (!isMuted) {
     gameOverSound.currentTime = 0;
     gameOverSound.play();

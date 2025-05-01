@@ -431,6 +431,48 @@ body {
   margin-bottom: 10px;
 }
 
+.achievement-title {
+  color: var(--accent);
+  font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(255, 107, 107, 0.2);
+  margin: 10px 0;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.achievement-title::before {
+  content: '🏆';
+  font-size: 1.2em;
+}
+
+.total-score {
+  color: var(--secondary-color);
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(78, 205, 196, 0.2);
+  margin: 10px 0;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: 2px solid var(--secondary-color);
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.total-score::before {
+  content: '🎯';
+  font-size: 1.2em;
+}
+
 #install-button {
   padding: clamp(8px, 2vw, 14px) clamp(15px, 3vw, 30px);
   background-color: var(--secondary-color);
@@ -524,6 +566,16 @@ body {
   #end-screen h2::before,
   #end-screen h2::after {
     font-size: 1em;
+  }
+
+  .achievement-title {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    padding: 8px 15px;
+  }
+
+  .total-score {
+    font-size: clamp(1.1rem, 3.5vw, 1.7rem);
+    padding: 8px 15px;
   }
 }
 

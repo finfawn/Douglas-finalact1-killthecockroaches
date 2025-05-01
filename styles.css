@@ -38,7 +38,8 @@ body {
   overflow-x: hidden;
 }
 
-#loading-screen, #end-screen {
+#loading-screen,
+#end-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,14 +52,18 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: 20px;
-  gap: 30px;
+  padding: 0;
+  gap: 24px;
   text-align: center;
 }
 
-#loading-screen > *, #end-screen > * {
-  margin-left: auto;
-  margin-right: auto;
+#loading-screen > *,
+#end-screen > * {
+  margin: 0 auto;
+  text-align: center;
+  width: auto;
+  max-width: 90vw;
+  box-sizing: border-box;
 }
 
 #loading-screen img {
@@ -99,12 +104,16 @@ body {
   font-size: 1.2em;
 }
 
-#start-button, #play-again-button {
+#start-button,
+#play-again-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  width: auto;
+  min-width: 160px;
+  max-width: 90vw;
+  text-align: center;
   padding: clamp(12px, 3vw, 18px) clamp(24px, 5vw, 48px);
   font-size: clamp(0.8rem, 2.5vw, 1.1rem);
   background: var(--accent);
@@ -189,7 +198,7 @@ body {
 #game-area {
   max-width: 1100px;
   flex-grow: 1;
-  margin: 8px auto 8px auto;
+  margin: 8px auto;
   background: var(--floor-pattern);
   border: 3px solid var(--panel-border);
   border-radius: 20px;
@@ -210,6 +219,9 @@ body {
   backface-visibility: hidden;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  margin-left: max(8px, env(safe-area-inset-left));
+  margin-right: max(8px, env(safe-area-inset-right));
+  margin-bottom: max(8px, env(safe-area-inset-bottom, 8px));
 }
 
 #instructions {
@@ -581,11 +593,13 @@ body {
   }
 
   #game-area {
-    width: calc(92vw - 16px);
+    width: 100vw;
     border-radius: 15px;
     border-width: 2px;
-    margin: 5px auto 5px auto;
     min-height: calc(78vh - 100px);
+    margin-left: max(8px, env(safe-area-inset-left));
+    margin-right: max(8px, env(safe-area-inset-right));
+    margin-bottom: max(8px, env(safe-area-inset-bottom, 8px));
   }
 
   #instructions {
@@ -636,16 +650,17 @@ body {
     height: clamp(50px, 15vw, 85px);
   }
 
-  #loading-screen, #end-screen {
-    padding: 10px;
-    gap: 18px;
-    text-align: center;
+  #loading-screen,
+  #end-screen {
+    gap: 14px;
+    padding: 0;
   }
-  #start-button, #play-again-button {
+  #start-button,
+  #play-again-button {
     font-size: 1.1rem;
     padding: 10px 18px;
-    margin-left: auto;
-    margin-right: auto;
+    min-width: 120px;
+    max-width: 95vw;
   }
 }
 
@@ -660,7 +675,9 @@ body {
     min-height: 26px;
   }
   #game-area {
-    margin: 3px auto 3px auto;
+    margin-left: max(4px, env(safe-area-inset-left));
+    margin-right: max(4px, env(safe-area-inset-right));
+    margin-bottom: max(4px, env(safe-area-inset-bottom, 4px));
   }
 }
 

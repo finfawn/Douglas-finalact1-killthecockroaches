@@ -150,19 +150,20 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 8px 15px;
+  padding: 6px 12px;
   margin: 5px 0;
   background: var(--hud-bg);
   border: 2px solid var(--hud-border);
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: var(--hud-shadow);
-  gap: 15px;
+  gap: 12px;
+  font-size: clamp(0.7rem, 1.8vw, 0.9rem);
 }
 
 #game-area {
-  width: min(98vw, 1100px);
+  width: min(95vw, 1100px);
   flex-grow: 1;
-  margin: 5px auto;
+  margin: 8px auto;
   background: var(--floor-pattern);
   border: 3px solid var(--panel-border);
   border-radius: 20px;
@@ -178,7 +179,7 @@ body {
   user-select: none;
   -webkit-user-drag: none;
   -webkit-tap-highlight-color: transparent;
-  min-height: calc(80vh - 120px); /* Ensure good height while leaving space for other elements */
+  min-height: calc(82vh - 120px);
 }
 
 #instructions {
@@ -203,27 +204,30 @@ body {
 #info-panel {
   display: flex;
   align-items: center;
-  gap: clamp(15px, 3vw, 36px);
-  font-size: clamp(0.6rem, 2vw, 1.1rem);
+  gap: clamp(12px, 2vw, 24px);
+  font-size: inherit;
   color: var(--text-color);
   margin-left: auto;
 }
 
-#info-panel button {
-  background: none;
-  border: none;
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: var(--accent);
-  cursor: pointer;
-  transition: transform 0.2s;
-  padding: 5px;
-  transform: scale(1);
+#timer::before {
+  content: '⏱️';
+  margin-right: 5px;
 }
 
-#info-panel button:hover {
-  color: var(--danger);
-  transform: scale(1.15);
+#kills::before {
+  content: '💀';
+  margin-right: 5px;
+}
+
+#mute-button {
+  font-size: 1.2em;
+  padding: 4px;
+  background: none;
+  border: none;
   cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.2s;
 }
 
 #notification {
@@ -288,8 +292,8 @@ body {
 
 .cockroach {
   position: absolute;
-  width: clamp(40px, 10vw, 70px);
-  height: clamp(40px, 10vw, 70px);
+  width: clamp(45px, 12vw, 75px);
+  height: clamp(45px, 12vw, 75px);
   background-image: url('roach.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -519,8 +523,8 @@ body {
 
 @media (max-width: 600px) {
   #main-content {
-    padding: 5px;
-    padding-bottom: max(5px, env(safe-area-inset-bottom, 5px));
+    padding: 8px;
+    padding-bottom: max(8px, env(safe-area-inset-bottom, 8px));
   }
 
   #game-title {
@@ -530,19 +534,21 @@ body {
   }
 
   .controls-container {
-    padding: 6px 12px;
+    padding: 5px 10px;
     margin: 3px 0;
-    gap: 10px;
-    border-width: 2px;
-    border-radius: 10px;
+    gap: 8px;
+    font-size: 0.7rem;
+    border-width: 1.5px;
+    border-radius: 8px;
+    width: calc(92vw);
   }
 
   #game-area {
-    width: calc(100vw - 10px);
+    width: calc(92vw);
     border-radius: 15px;
     border-width: 2px;
-    margin: 3px auto;
-    min-height: calc(75vh - 100px);
+    margin: 5px auto;
+    min-height: calc(78vh - 100px);
   }
 
   #instructions {
@@ -581,6 +587,32 @@ body {
   .total-score {
     font-size: clamp(1.1rem, 3.5vw, 1.7rem);
     padding: 8px 15px;
+  }
+
+  #mute-button {
+    padding: 3px;
+  }
+
+  .cockroach {
+    width: clamp(50px, 15vw, 85px);
+    height: clamp(50px, 15vw, 85px);
+  }
+}
+
+@media (max-width: 380px) {
+  .controls-container {
+    padding: 4px 8px;
+    gap: 6px;
+    font-size: 0.65rem;
+  }
+
+  #info-panel {
+    gap: 8px;
+  }
+
+  #timer::before,
+  #kills::before {
+    margin-right: 3px;
   }
 }
 

@@ -173,7 +173,7 @@ body {
 }
 
 .controls-container {
-  width: calc(95vw - 16px);
+  width: auto;
   max-width: 1100px;
   display: flex;
   justify-content: flex-start;
@@ -189,10 +189,49 @@ body {
   min-height: 40px;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#info-panel {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 16px);
+  font-size: inherit;
+  color: var(--text-color);
+  margin-left: auto;
+  margin-right: 0;
+  transition: all 0.3s ease;
+}
+
+#timer, #kills {
+  font-size: 0.9em;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#mute-button {
+  font-size: 1.1em;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.2s;
+  border-radius: 8px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .controls-container.center-info-panel {
   justify-content: center;
+  width: auto;
+}
+
+.controls-container.center-info-panel #info-panel {
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: center;
+  width: auto;
 }
 
 #game-area {
@@ -239,60 +278,6 @@ body {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-}
-
-#info-panel {
-  display: flex;
-  align-items: center;
-  gap: clamp(12px, 2vw, 24px);
-  font-size: inherit;
-  color: var(--text-color);
-  margin-left: auto;
-  margin-right: 0;
-  transition: margin 0.3s ease;
-}
-
-.controls-container.center-info-panel {
-  justify-content: center;
-}
-
-.controls-container.center-info-panel #info-panel {
-  margin-left: 0;
-  margin-right: 0;
-  justify-content: center;
-  width: 100%;
-}
-
-#timer, #kills {
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-#timer::before {
-  content: '⏱️';
-  margin-right: 5px;
-}
-
-#kills::before {
-  content: '💀';
-  margin-right: 5px;
-}
-
-#mute-button {
-  font-size: 1.3em;
-  padding: 4px 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--accent);
-  transition: transform 0.2s;
-  border-radius: 8px;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-#mute-button:active {
-  background: var(--panel-bg);
 }
 
 #notification {
@@ -586,14 +571,22 @@ body {
   }
 
   .controls-container {
-    width: calc(92vw - 16px);
-    padding: 4px 6px;
-    margin: 2px auto 4px auto;
-    gap: 7px;
-    font-size: 1.1rem;
+    padding: 4px 8px;
+    gap: 8px;
     min-height: 32px;
-    border-width: 1.5px;
-    border-radius: 7px;
+  }
+
+  #info-panel {
+    gap: 6px;
+  }
+
+  #timer, #kills {
+    font-size: 0.85em;
+  }
+
+  #mute-button {
+    font-size: 1.2em;
+    padding: 3px 6px;
   }
 
   #game-area {
@@ -643,22 +636,6 @@ body {
     padding: 8px 15px;
   }
 
-  #mute-button {
-    font-size: 1.7em;
-    padding: 4px 10px;
-    border-radius: 10px;
-  }
-
-  .cockroach {
-    width: clamp(50px, 15vw, 85px);
-    height: clamp(50px, 15vw, 85px);
-  }
-
-  #loading-screen,
-  #end-screen {
-    gap: 14px;
-    padding: 0;
-  }
   #start-button,
   #play-again-button {
     font-size: 1.1rem;
